@@ -1,0 +1,116 @@
+{
+  "id": "6772367fe4f1b0ac7a291212",
+  "name": "John Damn",
+  "email": "jdoe@example.com",
+  "profile_picture": "/aws/fs/image.jpg",
+  "phone_number_details": {
+    "country_code": "+1",
+    "number": "124010249"
+  },
+  "bio": "This is my bio",
+  "metadata": {
+    "skills": ["React.js", "Express.js", "MongoDB", "Node.js"],
+    "address": {
+      "line1": "01, Lane B",
+      "line2": "JanakPuri",
+      "city": "New Delhi",
+      "state": "New Delhi",
+      "pincode": "00000"
+    },
+    "coverletter": "",
+    "resume": [
+      {
+        "resume_title": "Full Stack Dev Resume",
+        "resume_link": "/aws/fs/doc1.pdf"
+      },
+      {
+        "resume_title": "Frontend Resume",
+        "resume_link": "/aws/fs/doc2.pdf"
+      },
+      {
+        "resume_title": "backend Resume",
+        "resume_link": "/aws/fs/doc3.pdf"
+      }
+    ],
+    "experience": [
+      {
+        "job_title": "Software Engineer",
+        "company_name": "Alphabet Inc",
+        "yoe": "2",
+        "description": "Worked as a SE"
+      },
+      {
+        "job_title": "Software Developer",
+        "company_name": "Meta",
+        "yoe": "1.2",
+        "description": "Worked as a SDE"
+      }
+    ],
+    "projects": [
+      {
+        "proj_name": "Todo app",
+        "proj_link": "https://www.google.com",
+        "proj_desc": "Stores to do things on cloud",
+        "tech_stack": ["frontend", "backend", "database"]
+      },
+      {
+        "proj_name": "Netlfix clone",
+        "proj_link": "https://www.google.com",
+        "proj_desc": "Clone of Netflix application",
+        "tech_stack": ["frontend", "backend", "database"]
+      }
+    ],
+    "links": [
+      {
+        "portfolio": [
+          {
+            "porfolio_name": "primary",
+            "porfolio_link": "https://www.google.com"
+          },
+          {
+            "porfolio_name": "secondary",
+            "porfolio_link": "https://www.google.com"
+          },
+          {
+            "porfolio_name": "tertiary",
+            "porfolio_link": "https://www.google.com"
+          }
+        ],
+        "socials": [
+          {
+            "social_name": "LinkedIn",
+            "social_link": "https://www.google.com"
+          },
+          {
+            "social_name": "Github",
+            "social_link": "https://www.google.com"
+          }
+        ]
+      }
+    ],
+    "applications_filled": [
+      {
+        "company_name": "Netflix",
+        "application_link": "https://google.com",
+        "applied_on": "12-12-24",
+        "follow_up_reminder": {
+          "type": "date",
+          "value": "22-12-24",
+          "to_remind_on": "22-12-24"
+        },
+        "additional_note": "lorem ipsum"
+      },
+      {
+        "company_name": "Amazon",
+        "application_link": "https://google.com",
+        "applied_on": "13-12-24",
+        "follow_up_reminder": {
+          "type": "day",
+          "value": "15",
+          "to_remind_on": "28-12-24"
+        },
+        "additional_note": "lorem ipsum"
+      }
+    ]
+  }
+}
