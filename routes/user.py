@@ -1,11 +1,12 @@
 # /routes/user.py
+from typing import List
 from fastapi import APIRouter, Body, HTTPException, status
 from fastapi.responses import Response
 from bson import ObjectId
 from pymongo import ReturnDocument
 
 from database import user_collection
-from schemas.user import UserModel, UpdateUserModel, UserCollection
+from schemas.user import Resume, UserModel, UpdateUserModel, UserCollection
 
 router = APIRouter(
     prefix="/user",
@@ -91,6 +92,57 @@ async def update_user(user_id: str, user: UpdateUserModel = Body(...)):
     if updated_user is not None:
         return updated_user
     raise HTTPException(status_code=404, detail=f"User {user_id} not found")
+
+@router.patch("/update/{user_id}/resume/add", response_model=UserModel)
+async def add_resume(user_id: str, resume: Resume):
+    """Add a new resume to user's metadata."""
+    try:
+        user_obj_id = ObjectId(user_id)
+    except:
+        raise HTTPException(status_code=400, detail="Invalid user ID format")
+
+    updated_user = await user_collection.find_one_and_update(
+        {"_id": user_obj_id},
+        {"$push": {"metadata.resume": resume.model_dump()}},
+        return_document=ReturnDocument.AFTER
+    )
+    if not updated_user:
+        raise HTTPException(status_code=404, detail="User not found")
+    return updated_user
+
+@router.delete("/update/{user_id}/applications/{company_name}", response_model=UserModel)
+async def remove_application(user_id: str, company_name: str):
+    """Remove a specific application by company name."""
+    try:
+        user_obj_id = ObjectId(user_id)
+    except:
+        raise HTTPException(status_code=400, detail="Invalid user ID format")
+
+    updated_user = await user_collection.find_one_and_update(
+        {"_id": user_obj_id},
+        {"$pull": {"metadata.applications_filled": {"company_name": company_name}}},
+        return_document=ReturnDocument.AFTER
+    )
+    if not updated_user:
+        raise HTTPException(status_code=404, detail="User not found")
+    return updated_user
+
+@router.patch("/update/{user_id}/skills", response_model=UserModel)
+async def update_skills(user_id: str, skills: List[str]):
+    """Update user's skills list."""
+    try:
+        user_obj_id = ObjectId(user_id)
+    except:
+        raise HTTPException(status_code=400, detail="Invalid user ID format")
+
+    updated_user = await user_collection.find_one_and_update(
+        {"_id": user_obj_id},
+        {"$set": {"metadata.skills": skills}},
+        return_document=ReturnDocument.AFTER
+    )
+    if not updated_user:
+        raise HTTPException(status_code=404, detail="User not found")
+    return updated_user
 
 @router.delete("/detele/{user_id}", response_description="Delete user")
 async def delete_user(user_id: str):

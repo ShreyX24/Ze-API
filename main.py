@@ -1,4 +1,5 @@
 # /main.py
+from fastapi.middleware.cors import CORSMiddleware
 from fastapi import FastAPI
 from routes import user
 
