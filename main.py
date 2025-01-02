@@ -4,6 +4,7 @@ from fastapi import FastAPI
 from routes import user
 
 app = FastAPI(
+    
     title="User Management API",
     description="API for managing user profiles with MongoDB backend",
     version="1.0.0"

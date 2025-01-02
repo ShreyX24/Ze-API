@@ -1,7 +1,8 @@
 # /routes/user.py
 from typing import List
-from fastapi import APIRouter, Body, HTTPException, status
+from fastapi import APIRouter, Body, HTTPException, status, Depends
 from fastapi.responses import Response
+from auth.dependencies import verify_token
 from bson import ObjectId
 from pymongo import ReturnDocument
 
@@ -12,6 +13,7 @@ router = APIRouter(
     prefix="/user",
     tags=["users"],
     responses={404: {"description": "Not found"}},
+    dependencies=[Depends(verify_token)]  # Apply authentication to all routes
 )
 
 @router.post(
