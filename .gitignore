@@ -3,3 +3,7 @@
 /routes/__pycache__
 /schemas/__pycache__
 *.pyc
+
+.vercel
+
+.env
