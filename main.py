@@ -14,16 +14,18 @@ app = FastAPI(
 
 origins = [
     "http://localhost:5173",     # Development frontend
+    "http://localhost",     # Development frontend
     "https://ze-api.vercel.app/",
     # "https://yourapp.vercel.app" # Production frontend
 ]
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins,
+    allow_origins=["*"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
+    expose_headers=["*"]
 )
 
 # Include routers
